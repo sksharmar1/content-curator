@@ -1,0 +1,38 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: analytics-service
+  datasource:
+    url: jdbc:postgresql://localhost:5433/contentcurator
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  secret: ${JWT_SECRET:content-curator-secret-key-must-be-at-least-32-characters-long}
+
+aws:
+  region: us-east-1
+  endpoint-override: http://localhost:4566
+  access-key: test
+  secret-key: test
+  sqs:
+    user-activity-queue-url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/user-activity
+
+ml:
+  service:
+    url: ${ML_SERVICE_URL:http://localhost:5001}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,143 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: cc-postgres
+    environment:
+      POSTGRES_DB: contentcurator
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - cc-postgres-data:/var/lib/postgresql/data
+      - ../db/V1__initial_schema.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  localstack:
+    image: localstack/localstack:3.3
+    container_name: cc-localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=sqs,s3,lambda
+      - DEFAULT_REGION=us-east-1
+    volumes:
+      - cc-localstack-data:/var/lib/localstack
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:4566/_localstack/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  user-profile:
+    build:
+      context: ../user-profile
+      dockerfile: Dockerfile
+    container_name: cc-user-profile
+    ports:
+      - "8081:8081"
+    environment:
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - JWT_SECRET=content-curator-secret-key-must-be-at-least-32-characters-long
+      - AWS_REGION=us-east-1
+      - AWS_ACCESS_KEY=test
+      - AWS_SECRET_KEY=test
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  content-ingestion:
+    build:
+      context: ../content-ingestion
+      dockerfile: Dockerfile
+    container_name: cc-content-ingestion
+    ports:
+      - "8082:8082"
+    environment:
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - AWS_REGION=us-east-1
+      - AWS_ACCESS_KEY=test
+      - AWS_SECRET_KEY=test
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+
+  recommendation:
+    build:
+      context: ../recommendation
+      dockerfile: Dockerfile
+    container_name: cc-recommendation
+    ports:
+      - "8083:8083"
+    environment:
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - JWT_SECRET=content-curator-secret-key-must-be-at-least-32-characters-long
+      - AWS_REGION=us-east-1
+      - AWS_ACCESS_KEY=test
+      - AWS_SECRET_KEY=test
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+
+  analytics:
+    build:
+      context: ../analytics
+      dockerfile: Dockerfile
+    container_name: cc-analytics
+    ports:
+      - "8084:8084"
+    environment:
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - JWT_SECRET=content-curator-secret-key-must-be-at-least-32-characters-long
+      - AWS_REGION=us-east-1
+      - AWS_ACCESS_KEY=test
+      - AWS_SECRET_KEY=test
+      - ML_SERVICE_URL=http://ml-service:5001
+    depends_on:
+      postgres:
+        condition: service_healthy
+      localstack:
+        condition: service_healthy
+      ml-service:
+        condition: service_started
+
+  ml-service:
+    build:
+      context: ../ml-service
+      dockerfile: Dockerfile
+    container_name: cc-ml-service
+    ports:
+      - "5001:5001"
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: cc-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - user-profile
+      - recommendation
+      - analytics
+      - content-ingestion
+
+volumes:
+  cc-postgres-data:
+  cc-localstack-data:

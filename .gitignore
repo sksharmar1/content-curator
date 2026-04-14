@@ -1,0 +1,26 @@
+# Maven
+target/
+*.jar
+*.war
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node
+node_modules/
+build/
+.env.local
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Dev tools
+dev-tools/.token
+
+# OS
+.DS_Store
