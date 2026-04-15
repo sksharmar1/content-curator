@@ -135,12 +135,3 @@ Standard Commons Logging discovery in action with spring-jcl: please remove comm
 2026-04-14T22:23:20.327-04:00  INFO 37354 --- [content-ingestion-service] [nio-8082-exec-5] c.c.i.a.service.FeedIngestionService     : Feed [InfoQ Java] — 0 new articles ingested
 2026-04-14T22:23:21.811-04:00  INFO 37354 --- [content-ingestion-service] [nio-8082-exec-5] c.c.i.a.service.FeedIngestionService     : Feed [OpenAI Blog] — 0 new articles ingested
 2026-04-14T22:23:22.337-04:00  INFO 37354 --- [content-ingestion-service] [nio-8082-exec-5] c.c.i.a.service.FeedIngestionService     : Feed [Towards Data Science] — 0 new articles ingested
-2026-04-14T22:35:40.132-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Polling 7 active feeds
-2026-04-14T22:35:40.507-04:00 ERROR 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.infrastructure.rss.RssFetcher      : Failed to fetch RSS feed https://www.deeplearning.ai/the-batch/feed/: https://www.deeplearning.ai/the-batch/feed/
-2026-04-14T22:35:40.527-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Feed [DeepLearning.AI The Batch] — 0 new articles ingested
-2026-04-14T22:35:40.818-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Feed [Spring Blog] — 0 new articles ingested
-2026-04-14T22:35:41.335-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Feed [AWS News] — 0 new articles ingested
-2026-04-14T22:35:41.658-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Feed [KDnuggets] — 0 new articles ingested
-2026-04-14T22:35:42.412-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Feed [InfoQ Java] — 0 new articles ingested
-2026-04-14T22:35:43.574-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Feed [OpenAI Blog] — 0 new articles ingested
-2026-04-14T22:35:44.062-04:00  INFO 37354 --- [content-ingestion-service] [   scheduling-1] c.c.i.a.service.FeedIngestionService     : Feed [Towards Data Science] — 0 new articles ingested
