@@ -1,0 +1,74 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------< com.contentcurator:user-profile >-------------------
+[INFO] Building User Profile Bounded Context 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.2.5:run (default-cli) > test-compile @ user-profile >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ user-profile ---
+[INFO] Copying 2 resources from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ user-profile ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ user-profile ---
+[INFO] skip non existing resourceDirectory /Users/sksharma/projects/content-curator/user-profile/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ user-profile ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] <<< spring-boot:3.2.5:run (default-cli) < test-compile @ user-profile <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.2.5:run (default-cli) @ user-profile ---
+[INFO] Attaching agents: []
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-04-14T22:05:31.816-04:00  INFO 37353 --- [user-profile-service] [           main] c.c.userprofile.UserProfileApplication   : Starting UserProfileApplication using Java 21.0.3 with PID 37353 (/Users/sksharma/projects/content-curator/user-profile/target/classes started by sksharma in /Users/sksharma/projects/content-curator/user-profile)
+2026-04-14T22:05:31.818-04:00  INFO 37353 --- [user-profile-service] [           main] c.c.userprofile.UserProfileApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-04-14T22:05:32.255-04:00  INFO 37353 --- [user-profile-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-14T22:05:32.292-04:00  INFO 37353 --- [user-profile-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 1 JPA repository interface.
+2026-04-14T22:05:32.732-04:00  INFO 37353 --- [user-profile-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-04-14T22:05:32.741-04:00  INFO 37353 --- [user-profile-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-14T22:05:32.742-04:00  INFO 37353 --- [user-profile-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-04-14T22:05:32.804-04:00  INFO 37353 --- [user-profile-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-14T22:05:32.805-04:00  INFO 37353 --- [user-profile-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 949 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2026-04-14T22:05:32.906-04:00  INFO 37353 --- [user-profile-service] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-14T22:05:32.933-04:00  INFO 37353 --- [user-profile-service] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-04-14T22:05:32.949-04:00  INFO 37353 --- [user-profile-service] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-04-14T22:05:33.065-04:00  INFO 37353 --- [user-profile-service] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-04-14T22:05:33.079-04:00  INFO 37353 --- [user-profile-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-04-14T22:05:33.222-04:00  INFO 37353 --- [user-profile-service] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2d4f67e
+2026-04-14T22:05:33.223-04:00  INFO 37353 --- [user-profile-service] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-04-14T22:05:33.249-04:00  WARN 37353 --- [user-profile-service] [           main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-04-14T22:05:33.722-04:00  INFO 37353 --- [user-profile-service] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-04-14T22:05:33.761-04:00  INFO 37353 --- [user-profile-service] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-14T22:05:34.264-04:00  WARN 37353 --- [user-profile-service] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-04-14T22:05:34.384-04:00  INFO 37353 --- [user-profile-service] [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@136a5572, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@11548363, org.springframework.security.web.context.SecurityContextHolderFilter@577b2c5f, org.springframework.security.web.header.HeaderWriterFilter@35bcf3a6, org.springframework.web.filter.CorsFilter@800d065, org.springframework.security.web.authentication.logout.LogoutFilter@7a7f5c44, com.contentcurator.userprofile.infrastructure.security.JwtAuthFilter@4e3f2908, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2456716b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@63541960, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6be865c1, org.springframework.security.web.session.SessionManagementFilter@26401eda, org.springframework.security.web.access.ExceptionTranslationFilter@605c2b9f, org.springframework.security.web.access.intercept.AuthorizationFilter@44f8d884]
+2026-04-14T22:05:34.508-04:00  INFO 37353 --- [user-profile-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path ''
+2026-04-14T22:05:34.514-04:00  INFO 37353 --- [user-profile-service] [           main] c.c.userprofile.UserProfileApplication   : Started UserProfileApplication in 2.994 seconds (process running for 3.327)
+2026-04-14T22:05:34.602-04:00  INFO 37353 --- [user-profile-service] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-14T22:05:34.602-04:00  INFO 37353 --- [user-profile-service] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-14T22:05:34.604-04:00  INFO 37353 --- [user-profile-service] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-04-14T22:23:18.449-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2d4f67e (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.453-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7a73f476 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.453-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@6fef1510 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.453-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@b8ff11c (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.453-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@62ebdfa7 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.454-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@7de57c8 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.454-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@108e85b6 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.454-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@64fd91aa (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.454-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@58576c75 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.
+2026-04-14T22:23:18.455-04:00  WARN 37353 --- [user-profile-service] [nio-8081-exec-9] com.zaxxer.hikari.pool.PoolBase          : HikariPool-1 - Failed to validate connection org.postgresql.jdbc.PgConnection@2dc200a0 (This connection has been closed.). Possibly consider using a shorter maxLifetime value.

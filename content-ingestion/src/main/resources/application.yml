@@ -24,3 +24,9 @@ aws:
     user-activity-queue-url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/user-activity
 ingestion:
   poll-interval-ms: 1800000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

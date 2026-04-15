@@ -1,5 +1,6 @@
 server:
   port: 8081
+
 spring:
   application:
     name: user-profile-service
@@ -14,9 +15,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+
 jwt:
   secret: ${JWT_SECRET:content-curator-secret-key-must-be-at-least-32-characters-long}
   expiration-ms: 86400000
+
 aws:
   region: us-east-1
   endpoint-override: http://localhost:4566
@@ -24,6 +27,11 @@ aws:
   secret-key: test
   sqs:
     user-activity-queue-url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/user-activity
+    digest-scheduled-queue-url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/digest-scheduled
+
+digest:
+  schedule: "0 0 8 ? * SUN"
+
 management:
   endpoints:
     web:
