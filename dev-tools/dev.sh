@@ -168,11 +168,11 @@ case "$1" in
     aws --endpoint-url=http://localhost:4566 s3 ls \
       s3://content-curator-articles/ --recursive 2>/dev/null | wc -l | xargs echo "files"
     echo -n "  Lambda:          "
-    PAYLOAD=$(echo '{"Records":[{"body":"{\"userId\":\"a09b1130-866b-452f-834e-987b3a2f08a4\",\"email\":\"sk@test.com\",\"displayName\":\"SK Sharma\"}"}]}' | base64)
+    PAYLOAD='{"Records":[{"body":"{\"userId\":\"a09b1130-866b-452f-834e-987b3a2f08a4\",\"email\":\"sk@test.com\",\"displayName\":\"SK Sharma\"}"}]}'
     aws --endpoint-url=http://localhost:4566 lambda invoke \
       --function-name cc-digest \
       --payload "$PAYLOAD" \
-      --cli-binary-format raw-in-base64-out \
+       \
       --region us-east-1 \
       /tmp/lambda-response.json > /dev/null 2>&1 && cat /tmp/lambda-response.json || echo "Lambda not deployed"
     ;;
