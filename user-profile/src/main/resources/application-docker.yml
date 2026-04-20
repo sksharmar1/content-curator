@@ -1,8 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://postgres:5432/contentcurator
+    url: jdbc:postgresql://postgres-service:5432/contentcurator
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
 
 aws:
   region: ${AWS_REGION:us-east-1}
@@ -11,7 +14,9 @@ aws:
   secret-key: ${AWS_SECRET_KEY:test}
   sqs:
     user-activity-queue-url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/user-activity
+    content-ingested-queue-url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/content-ingested
     digest-scheduled-queue-url: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/digest-scheduled
 
-digest:
-  schedule: "0 0 8 ? * SUN"
+ml:
+  service:
+    url: ${ML_SERVICE_URL:http://ml-service:5001}

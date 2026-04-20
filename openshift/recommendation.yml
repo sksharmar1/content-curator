@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-profile
+  name: recommendation
   namespace: sksharmar1-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-profile
+      app: recommendation
   template:
     metadata:
       labels:
-        app: user-profile
+        app: recommendation
     spec:
       containers:
-        - name: user-profile
-          image: image-registry.openshift-image-registry.svc:5000/sksharmar1-dev/user-profile:latest
+        - name: recommendation
+          image: image-registry.openshift-image-registry.svc:5000/sksharmar1-dev/recommendation:latest
           ports:
-            - containerPort: 8081
+            - containerPort: 8083
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: docker
@@ -58,13 +58,13 @@ spec:
                   key: ML_SERVICE_URL
           readinessProbe:
             tcpSocket:
-              port: 8081
+              port: 8083
             initialDelaySeconds: 40
             periodSeconds: 10
             failureThreshold: 15
           livenessProbe:
             tcpSocket:
-              port: 8081
+              port: 8083
             initialDelaySeconds: 90
             periodSeconds: 30
             failureThreshold: 5
@@ -72,25 +72,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-profile-service
+  name: recommendation-service
   namespace: sksharmar1-dev
 spec:
   selector:
-    app: user-profile
+    app: recommendation
   ports:
-    - port: 8081
-      targetPort: 8081
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: user-profile-route
-  namespace: sksharmar1-dev
-spec:
-  to:
-    kind: Service
-    name: user-profile-service
-  port:
-    targetPort: 8081
-  tls:
-    termination: edge
+    - port: 8083
+      targetPort: 8083
