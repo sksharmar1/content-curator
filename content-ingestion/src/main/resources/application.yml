@@ -4,7 +4,7 @@ spring:
   application:
     name: content-ingestion-service
   datasource:
-    url: jdbc:postgresql://localhost:5433/contentcurator
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5433/contentcurator}
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:postgres}
   jpa:

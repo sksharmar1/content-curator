@@ -6,6 +6,9 @@ spring:
     name: api-gateway
   cloud:
     gateway:
+      # Gateway handles CORS itself; strip Origin so downstream CorsFilters pass requests through
+      default-filters:
+        - RemoveRequestHeader=Origin
       routes:
         - id: user-profile
           uri: ${USER_PROFILE_URL:http://localhost:8081}

@@ -1,0 +1,19 @@
+# Build from repo root: docker build -f docker/Dockerfile.recommendation .
+FROM maven:3.9-eclipse-temurin-21 AS build
+WORKDIR /app
+COPY pom.xml .
+COPY shared-kernel/pom.xml shared-kernel/
+COPY user-profile/pom.xml user-profile/
+COPY content-ingestion/pom.xml content-ingestion/
+COPY recommendation/pom.xml recommendation/
+COPY analytics/pom.xml analytics/
+COPY api-gateway/pom.xml api-gateway/
+COPY shared-kernel/src shared-kernel/src
+COPY recommendation/src recommendation/src
+RUN mvn -q -B -pl recommendation -am package -DskipTests
+
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+COPY --from=build /app/recommendation/target/*.jar app.jar
+ENV JAVA_OPTS="-Xmx384m -XX:MaxMetaspaceSize=128m -XX:+UseSerialGC"
+ENTRYPOINT ["sh", "-c", "java $JAVA_OPTS -Dserver.port=${PORT:-8080} -jar app.jar"]

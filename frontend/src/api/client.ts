@@ -1,21 +1,14 @@
 import axios from 'axios';
 
-const IS_PROD = window.location.hostname !== 'localhost';
+// Single entry point: the API gateway routes /api/** to the right service.
+// Set REACT_APP_API_URL at build time (e.g. https://content-curator-gateway.onrender.com).
+// Falls back to direct local service ports for local dev without the gateway.
+const GATEWAY = process.env.REACT_APP_API_URL;
 
-const BASE = 'https://{svc}-route-sksharmar1-dev.apps.rm2.thpm.p1.openshiftapps.com';
-
-const USER_PROFILE_URL   = IS_PROD
-  ? 'https://user-profile-route-sksharmar1-dev.apps.rm2.thpm.p1.openshiftapps.com'
-  : 'http://localhost:8081';
-const CONTENT_URL        = IS_PROD
-  ? 'https://content-ingestion-route-sksharmar1-dev.apps.rm2.thpm.p1.openshiftapps.com'
-  : 'http://localhost:8082';
-const RECOMMENDATION_URL = IS_PROD
-  ? 'https://recommendation-route-sksharmar1-dev.apps.rm2.thpm.p1.openshiftapps.com'
-  : 'http://localhost:8083';
-const ANALYTICS_URL      = IS_PROD
-  ? 'https://analytics-route-sksharmar1-dev.apps.rm2.thpm.p1.openshiftapps.com'
-  : 'http://localhost:8084';
+const USER_PROFILE_URL   = GATEWAY || 'http://localhost:8081';
+const CONTENT_URL        = GATEWAY || 'http://localhost:8082';
+const RECOMMENDATION_URL = GATEWAY || 'http://localhost:8083';
+const ANALYTICS_URL      = GATEWAY || 'http://localhost:8084';
 
 let authToken: string | null = null;
 

@@ -1,0 +1,10 @@
+.git
+frontend
+ml-service
+dev-tools
+openshift
+aws
+lambda
+**/target
+.idea
+.DS_Store
