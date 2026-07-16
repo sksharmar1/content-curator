@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: user-profile
+          uri: ${USER_PROFILE_URL:http://localhost:8081}
+          predicates:
+            - Path=/api/auth/**,/api/users/**
+        - id: content-ingestion
+          uri: ${CONTENT_INGESTION_URL:http://localhost:8082}
+          predicates:
+            - Path=/api/feeds/**
+        - id: recommendation
+          uri: ${RECOMMENDATION_URL:http://localhost:8083}
+          predicates:
+            - Path=/api/recommendations/**,/api/admin/**
+        - id: analytics
+          uri: ${ANALYTICS_URL:http://localhost:8084}
+          predicates:
+            - Path=/api/analytics/**
+        - id: ml-service
+          uri: ${ML_SERVICE_URL:http://localhost:5001}
+          predicates:
+            - Path=/api/ml/**
+          filters:
+            - StripPrefix=2
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: ${CORS_ALLOWED_ORIGINS:http://localhost:3000}
+            allowedMethods: [GET, POST, PUT, PATCH, DELETE, OPTIONS]
+            allowedHeaders: '*'
+            allowCredentials: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,gateway

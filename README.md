@@ -4,6 +4,7 @@ A full-stack AI-powered content curation platform for self-directed learners.
 
 ## Architecture
 
+- **api-gateway** (Spring Cloud Gateway, port 8080) — single entry point, routing + CORS
 - **user-profile** (Spring Boot, port 8081) — JWT auth, interest graph
 - **content-ingestion** (Spring Boot, port 8082) — RSS polling, deduplication
 - **recommendation** (Spring Boot, port 8083) — scoring engine, ranked feed
@@ -18,6 +19,7 @@ A full-stack AI-powered content curation platform for self-directed learners.
 cd docker && docker compose up -d
 
 # Start services (one per terminal)
+cd api-gateway && mvn spring-boot:run
 cd user-profile && mvn spring-boot:run
 cd content-ingestion && mvn spring-boot:run
 cd recommendation && mvn spring-boot:run
